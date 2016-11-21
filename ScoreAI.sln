@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreAI", "ScoreAI.csproj", "{492DCABC-AFDF-4FA8-8F73-5CE81527E321}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreAI", "ScoreAI\ScoreAI.csproj", "{492DCABC-AFDF-4FA8-8F73-5CE81527E321}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreAITest", "ScoreAITest\ScoreAITest.csproj", "{BB13FE56-EC8A-4041-ACB6-18AB3270D8CA}"
 EndProject

@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ScoreAI.csproj">
+    <ProjectReference Include="..\ScoreAI\ScoreAI.csproj">
       <Project>{492dcabc-afdf-4fa8-8f73-5ce81527e321}</Project>
       <Name>ScoreAI</Name>
     </ProjectReference>
