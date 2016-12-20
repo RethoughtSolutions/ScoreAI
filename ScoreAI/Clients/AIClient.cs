@@ -21,7 +21,6 @@ namespace ScoreAI
 {
     #region Using Directives
 
-    using ScoreAI.Context;
     using ScoreAI.Selector;
 
     #endregion
@@ -29,36 +28,14 @@ namespace ScoreAI
     /// <summary>
     ///     The AI client.
     /// </summary>
-    public class AIClient<T> : IAIClient<T> where T : IContext
+    public class AIClient : IAIClient
     {
-        #region Fields
-
-        /// <summary>
-        ///     The context provider
-        /// </summary>
-        private readonly IContextProvider<T> contextProvider;
-
-        #endregion
-
-        #region Constructors and Destructors
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="AIClient" /> class.
-        /// </summary>
-        /// <param name="contextProvider">The context provider.</param>
-        public AIClient(IContextProvider<T> contextProvider)
-        {
-            this.contextProvider = contextProvider;
-        }
-
-        #endregion
-
         #region Public Properties
 
         /// <summary>
         ///     Gets or sets the selector.
         /// </summary>
-        public ISelector<T> RootSelector { get; set; }
+        public SelectorBase RootSelector { get; set; }
 
         #endregion
 
@@ -67,13 +44,11 @@ namespace ScoreAI
         /// <summary>
         ///     Ticks this instance.
         /// </summary>
-        public void Tick()
+        public virtual void Tick()
         {
-            var context = this.contextProvider.Context;
+            var qualifier = this.RootSelector.Select();
 
-            var qualifier = this.RootSelector.Select(context);
-
-            qualifier?.Action?.Execute(context);
+            qualifier?.Action?.Execute();
         }
 
         #endregion

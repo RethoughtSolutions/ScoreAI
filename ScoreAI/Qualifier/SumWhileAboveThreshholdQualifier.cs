@@ -21,14 +21,14 @@ namespace ScoreAI.Qualifier
 {
     #region Using Directives
 
-    using ScoreAI.Context;
+    
 
     #endregion
 
     /// <summary>
     ///     The sum while above threshhold qualifier.
     /// </summary>
-    public class SumWhileAboveThreshholdQualifier : QualifierBase<IContext>
+    public class SumWhileAboveThreshholdQualifier : QualifierBase
     {
         #region Fields
 
@@ -63,13 +63,13 @@ namespace ScoreAI.Qualifier
         /// <returns>
         ///     The <see cref="float" />.
         /// </returns>
-        public override float Score(IContext context)
+        public override float Score()
         {
             var sum = 0f;
 
             foreach (var scorer in this.Scorers)
             {
-                var score = scorer.Score(context);
+                var score = scorer.Score();
 
                 if (score > this.threshhold)
                     sum += score;

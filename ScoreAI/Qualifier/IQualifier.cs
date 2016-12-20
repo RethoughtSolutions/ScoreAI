@@ -24,7 +24,6 @@ namespace ScoreAI.Qualifier
     using System.Collections.Generic;
 
     using ScoreAI.Action;
-    using ScoreAI.Context;
     using ScoreAI.Scorer;
 
     #endregion
@@ -32,21 +31,19 @@ namespace ScoreAI.Qualifier
     /// <summary>
     /// The Qualifier interface.
     /// </summary>
-    /// <typeparam name="T">
-    /// </typeparam>
-    public interface IQualifier<T> where T : IContext
+    public interface IQualifier
     {
         #region Public Properties
 
         /// <summary>
         ///     Gets or sets the action.
         /// </summary>
-        IAction<T> Action { get; set; }
+        IAction Action { get; set; }
 
         /// <summary>
         ///     Gets or sets the scorers.
         /// </summary>
-        IList<IContextualScorer<T>> Scorers { get; set; }
+        IList<IContextualScorer> Scorers { get; set; }
 
         #endregion
 
@@ -56,7 +53,7 @@ namespace ScoreAI.Qualifier
         ///     Adds a scorer.
         /// </summary>
         /// <param name="scorer">The scorer.</param>
-        void AddScorer(IContextualScorer<T> scorer);
+        void AddScorer(IContextualScorer scorer);
 
         /// <summary>
         ///     The score.
@@ -67,13 +64,13 @@ namespace ScoreAI.Qualifier
         /// <returns>
         ///     The <see cref="float" />.
         /// </returns>
-        float Score(T context);
+        float Score();
 
         /// <summary>
         ///     Sets the action.
         /// </summary>
         /// <param name="action">The action.</param>
-        void SetAction(IAction<T> action);
+        void SetAction(IAction action);
 
         #endregion
     }

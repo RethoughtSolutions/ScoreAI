@@ -15,20 +15,20 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.11.2016 8:29 PM
+//     Last Edited: 24.11.2016 12:17 AM
 
 namespace ScoreAI.Scorer
 {
     #region Using Directives
 
-    using ScoreAI.Context;
+    
 
     #endregion
 
     /// <summary>
     ///     The contextual scorer base.
     /// </summary>
-    public abstract class ContextualScorerBase<T> : IContextualScorer<T> where T : IContext
+    public abstract class ContextualScorerBase : IContextualScorer
     {
         #region Public Methods and Operators
 
@@ -41,7 +41,7 @@ namespace ScoreAI.Scorer
         /// <returns>
         ///     The <see cref="float" />.
         /// </returns>
-        public abstract float Score(T context);
+        public abstract float Score();
 
         #endregion
     }

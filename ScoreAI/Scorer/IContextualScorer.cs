@@ -21,14 +21,14 @@ namespace ScoreAI.Scorer
 {
     #region Using Directives
 
-    using ScoreAI.Context;
+    
 
     #endregion
 
     /// <summary>
     ///     The ContextualScorer interface.
     /// </summary>
-    public interface IContextualScorer<in T>
+    public interface IContextualScorer
     {
         #region Public Methods and Operators
 
@@ -41,7 +41,7 @@ namespace ScoreAI.Scorer
         /// <returns>
         ///     The <see cref="float" />.
         /// </returns>
-        float Score(T context);
+        float Score();
 
         #endregion
     }

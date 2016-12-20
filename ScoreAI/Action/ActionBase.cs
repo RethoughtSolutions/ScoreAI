@@ -21,14 +21,14 @@ namespace ScoreAI.Action
 {
     #region Using Directives
 
-    using ScoreAI.Context;
+    
 
     #endregion
 
     /// <summary>
     ///     The action base.
     /// </summary>
-    public abstract class ActionBase<T> : IAction<T> where T : IContext
+    public abstract class ActionBase : IAction
     {
         #region Public Methods and Operators
 
@@ -38,7 +38,7 @@ namespace ScoreAI.Action
         /// <param name="context">
         ///     The context.
         /// </param>
-        public abstract void Execute(T context);
+        public abstract void Execute();
 
         #endregion
     }

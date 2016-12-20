@@ -1,4 +1,4 @@
-//     File:  ScoreAI/ScoreAI/IContext.cs
+﻿//     File:  ScoreAI/ScoreAI/IAIClient.cs
 //     Copyright (C) 2016 Rethought and SupportExTraGoZ
 // 
 //     This program is free software: you can redistribute it and/or modify
@@ -17,13 +17,35 @@
 //     Created: 20.11.2016 7:30 PM
 //     Last Edited: 20.11.2016 8:29 PM
 
-namespace ScoreAI.Context
+namespace ScoreAI
 {
+    #region Using Directives
+
+    using ScoreAI.Selector;
+
+    #endregion
+
     /// <summary>
-    ///     The Context interface. Most things will be covered by LeagueSharps static classes. However, for more specific
-    ///     things you might want to create your own context.
+    ///     The AiClient interface.
     /// </summary>
-    public interface IContext
+    public interface IAIClient
     {
+        #region Public Properties
+
+        /// <summary>
+        ///     Gets or sets the selector.
+        /// </summary>
+        SelectorBase RootSelector { get; set; }
+
+        #endregion
+
+        #region Public Methods and Operators
+
+        /// <summary>
+        ///     Ticks this instance.
+        /// </summary>
+        void Tick();
+
+        #endregion
     }
 }

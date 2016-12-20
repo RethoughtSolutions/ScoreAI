@@ -21,7 +21,6 @@ namespace ScoreAI.Selector
 {
     #region Using Directives
 
-    using ScoreAI.Context;
     using ScoreAI.Qualifier;
 
     #endregion
@@ -29,7 +28,7 @@ namespace ScoreAI.Selector
     /// <summary>
     ///     The first score wins selector.
     /// </summary>
-    public class FirstScoreWinsSelector<T> : SelectorBase<T> where T : IContext
+    public class FirstScoreWinsSelector : SelectorBase
     {
         #region Fields
 
@@ -64,11 +63,11 @@ namespace ScoreAI.Selector
         /// <returns>
         ///     The <see cref="QualifierBase" />.
         /// </returns>
-        public override IQualifier<T> Select(T context)
+        public override IQualifier Select()
         {
             foreach (var qualifier in this.Qualifiers)
             {
-                if (!(qualifier.Score(context) > this.threshold)) continue;
+                if (!(qualifier.Score() > this.threshold)) continue;
 
                 return qualifier;
             }

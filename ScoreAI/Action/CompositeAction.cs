@@ -23,14 +23,12 @@ namespace ScoreAI.Action
 
     using System.Collections.Generic;
 
-    using ScoreAI.Context;
-
     #endregion
 
     /// <summary>
     ///     The composite action.
     /// </summary>
-    public class CompositeAction<T> : ActionBase<T> where T : IContext
+    public class CompositeAction : ActionBase
     {
         #region Public Properties
 
@@ -40,7 +38,7 @@ namespace ScoreAI.Action
         /// <value>
         ///     The actions.
         /// </value>
-        public List<IAction<T>> Actions { get; set; } = new List<IAction<T>>();
+        public List<IAction> Actions { get; set; } = new List<IAction>();
 
         #endregion
 
@@ -50,11 +48,11 @@ namespace ScoreAI.Action
         ///     Executes the action
         /// </summary>
         /// <param name="context">The context.</param>
-        public override void Execute(T context)
+        public override void Execute()
         {
             foreach (var action in this.Actions)
             {
-                action.Execute(context);
+                action.Execute();
             }
         }
 

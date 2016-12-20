@@ -15,13 +15,13 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.11.2016 8:29 PM
+//     Last Edited: 24.11.2016 12:22 AM
 
 namespace ScoreAI.OptionScorer
 {
     #region Using Directives
 
-    using ScoreAI.Context;
+    
 
     #endregion
 
@@ -31,8 +31,27 @@ namespace ScoreAI.OptionScorer
     /// <typeparam name="T">
     ///     The type
     /// </typeparam>
-    public abstract class OptionScorerBase<TOption, TContext> : IOptionScorer<TOption, TContext> where TContext : IContext
+    public abstract class OptionScorerBase : IOptionScorer
     {
+        #region Constructors and Destructors
+
+        protected OptionScorerBase(string name)
+        {
+            this.Name = name;
+        }
+
+        protected OptionScorerBase()
+        {
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        public string Name { get; set; }
+
+        #endregion
+
         #region Public Methods and Operators
 
         /// <summary>
@@ -43,7 +62,7 @@ namespace ScoreAI.OptionScorer
         /// <returns>
         ///     The score
         /// </returns>
-        public abstract float Score(TContext context, TOption option);
+        public abstract float Score();
 
         #endregion
     }

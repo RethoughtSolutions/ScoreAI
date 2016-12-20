@@ -21,7 +21,6 @@ namespace ScoreAI.Action
 {
     #region Using Directives
 
-    using ScoreAI.Context;
     using ScoreAI.Selector;
 
     #endregion
@@ -29,14 +28,14 @@ namespace ScoreAI.Action
     /// <summary>
     ///     Used to link a selector to a qualifier
     /// </summary>
-    public class LinkedAction<T> : ActionBase<T> where T : IContext
+    public class LinkedAction : ActionBase
     {
         #region Fields
 
         /// <summary>
         ///     The selector
         /// </summary>
-        private readonly ISelector<IContext> selector;
+        private readonly ISelector selector;
 
         #endregion
 
@@ -46,7 +45,7 @@ namespace ScoreAI.Action
         ///     Initializes a new instance of the <see cref="LinkedAction" /> class.
         /// </summary>
         /// <param name="selector">The selector.</param>
-        public LinkedAction(ISelector<IContext> selector)
+        public LinkedAction(ISelector selector)
         {
             this.selector = selector;
         }
@@ -59,11 +58,11 @@ namespace ScoreAI.Action
         ///     Executes the action
         /// </summary>
         /// <param name="context">The context.</param>
-        public override void Execute(T context)
+        public override void Execute()
         {
-            var qualifier = this.selector.Select(context);
+            var qualifier = this.selector.Select();
 
-            qualifier?.Action?.Execute(context);
+            qualifier?.Action?.Execute();
         }
 
         #endregion

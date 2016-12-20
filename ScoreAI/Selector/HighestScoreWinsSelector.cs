@@ -21,7 +21,6 @@ namespace ScoreAI.Selector
 {
     #region Using Directives
 
-    using ScoreAI.Context;
     using ScoreAI.Extensions;
     using ScoreAI.Qualifier;
 
@@ -30,7 +29,7 @@ namespace ScoreAI.Selector
     /// <summary>
     /// The highest score wins selector.
     /// </summary>
-    public class HighestScoreWinsSelector<T> : SelectorBase<T> where T : IContext
+    public class HighestScoreWinsSelector : SelectorBase
     {
         #region Public Methods and Operators
 
@@ -41,9 +40,9 @@ namespace ScoreAI.Selector
         /// <returns>
         /// The <see cref="QualifierBase" />.
         /// </returns>
-        public override IQualifier<T> Select(T context)
+        public override IQualifier Select()
         {
-            return this.Qualifiers.MaxOrDefault(x => x.Score(context));
+            return this.Qualifiers.MaxOrDefault(x => x.Score());
         }
 
         #endregion

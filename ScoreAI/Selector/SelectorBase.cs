@@ -22,9 +22,7 @@ namespace ScoreAI.Selector
     #region Using Directives
 
     using System.Collections.Generic;
-    using System.Runtime.InteropServices;
 
-    using ScoreAI.Context;
     using ScoreAI.Qualifier;
 
     #endregion
@@ -32,20 +30,19 @@ namespace ScoreAI.Selector
     /// <summary>
     ///     The selector.
     /// </summary>
-    public abstract class SelectorBase<T> : ISelector<T>
-        where T : IContext
+    public abstract class SelectorBase : ISelector
     {
         #region Public Properties
 
         /// <summary>
         ///     Gets or sets the default qualifier. Which gets used when no qualifier scored above a threshold.
         /// </summary>
-        public IQualifier<T> DefaultQualifier { get; set; } = new FixedScoreQualifier<T>();
+        public IQualifier DefaultQualifier { get; set; } = new FixedScoreQualifier();
 
         /// <summary>
         ///     Gets or sets the qualifiers.
         /// </summary>
-        public List<IQualifier<T>> Qualifiers { get; set; } = new List<IQualifier<T>>();
+        public List<IQualifier> Qualifiers { get; set; } = new List<IQualifier>();
 
         #endregion
 
@@ -55,7 +52,7 @@ namespace ScoreAI.Selector
         ///     Adds a qualifier.
         /// </summary>
         /// <param name="qualifier">The qualifier.</param>
-        public void AddQualifier(IQualifier<T> qualifier)
+        public void AddQualifier(IQualifier qualifier)
         {
             this.Qualifiers.Add(qualifier);
         }
@@ -69,13 +66,13 @@ namespace ScoreAI.Selector
         /// <returns>
         ///     The <see cref="QualifierBase" />.
         /// </returns>
-        public abstract IQualifier<T> Select(T context);
+        public abstract IQualifier Select();
 
         /// <summary>
         ///     Sets the default qualifier.
         /// </summary>
         /// <param name="qualifier">The qualifier.</param>
-        public void SetDefaultQualifier(IQualifier<T> qualifier)
+        public void SetDefaultQualifier(IQualifier qualifier)
         {
             this.DefaultQualifier = qualifier;
         }

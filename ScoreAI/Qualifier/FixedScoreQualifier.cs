@@ -21,14 +21,14 @@ namespace ScoreAI.Qualifier
 {
     #region Using Directives
 
-    using ScoreAI.Context;
+    
 
     #endregion
 
     /// <summary>
     ///     The fixed fixedScore qualifier.
     /// </summary>
-    public class FixedScoreQualifier<T> : QualifierBase<T> where T : IContext
+    public class FixedScoreQualifier : QualifierBase
     {
         #region Fields
 
@@ -63,7 +63,7 @@ namespace ScoreAI.Qualifier
         /// <returns>
         ///     The <see cref="float" />.
         /// </returns>
-        public override float Score(T context)
+        public override float Score()
         {
             return this.fixedScore;
         }

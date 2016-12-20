@@ -24,7 +24,6 @@ namespace ScoreAI.Qualifier
     using System.Collections.Generic;
 
     using ScoreAI.Action;
-    using ScoreAI.Context;
     using ScoreAI.Scorer;
 
     #endregion
@@ -32,19 +31,31 @@ namespace ScoreAI.Qualifier
     /// <summary>
     ///     The qualifier base.
     /// </summary>
-    public abstract class QualifierBase<T> : IQualifier<T> where T : IContext
+    public abstract class QualifierBase : IQualifier
     {
+        protected QualifierBase(string name)
+        {
+            this.Name = name;
+        }
+
+        protected QualifierBase()
+        {
+
+        }
+
+        public string Name { get; set; }
+
         #region Public Properties
 
         /// <summary>
         ///     Gets or sets the action.
         /// </summary>
-        public IAction<T> Action { get; set; }
+        public IAction Action { get; set; }
 
         /// <summary>
         ///     Gets or sets the scorers.
         /// </summary>
-        public IList<IContextualScorer<T>> Scorers { get; set; } = new List<IContextualScorer<T>>();
+        public IList<IContextualScorer> Scorers { get; set; } = new List<IContextualScorer>();
 
         #endregion
 
@@ -54,7 +65,7 @@ namespace ScoreAI.Qualifier
         ///     Adds a scorer.
         /// </summary>
         /// <param name="scorer">The scorer.</param>
-        public void AddScorer(IContextualScorer<T> scorer)
+        public void AddScorer(IContextualScorer scorer)
         {
             this.Scorers.Add(scorer);
         }
@@ -66,13 +77,13 @@ namespace ScoreAI.Qualifier
         /// <returns>
         ///     The <see cref="float" />.
         /// </returns>
-        public abstract float Score(T context);
+        public abstract float Score();
 
         /// <summary>
         ///     Sets the action.
         /// </summary>
         /// <param name="action">The action.</param>
-        public void SetAction(IAction<T> action)
+        public void SetAction(IAction action)
         {
             this.Action = action;
         }

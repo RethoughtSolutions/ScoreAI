@@ -23,14 +23,12 @@ namespace ScoreAI.Qualifier
 
     using System.Linq;
 
-    using ScoreAI.Context;
-
     #endregion
 
     /// <summary>
     ///     The sum of children qualifier.
     /// </summary>
-    public class SumOfChildrenQualifier<T> : QualifierBase<T> where T : IContext
+    public class SumOfChildrenQualifier : QualifierBase
     {
         #region Public Methods and Operators
 
@@ -41,9 +39,9 @@ namespace ScoreAI.Qualifier
         /// <returns>
         ///     The <see cref="float" />.
         /// </returns>
-        public override float Score(T context)
+        public override float Score()
         {
-            return this.Scorers.Sum(x => x.Score(context));
+            return this.Scorers.Sum(x => x.Score());
         }
 
         #endregion

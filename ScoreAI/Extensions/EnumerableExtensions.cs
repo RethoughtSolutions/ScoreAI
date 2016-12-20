@@ -1,5 +1,5 @@
 ﻿//     File:  ScoreAI/ScoreAI/EnumerableExtensions.cs
-//     Copyright (C) 2016 Rethought and SupportExTraGoZ
+//     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.11.2016 8:29 PM
+//     Last Edited: 10.12.2016 12:26 AM
 
 namespace ScoreAI.Extensions
 {
@@ -44,19 +44,21 @@ namespace ScoreAI.Extensions
         public static T MaxOrDefault<T, TR>(this IEnumerable<T> container, Func<T, TR> valuingFoo)
             where TR : IComparable
         {
-            var enumerator = container.GetEnumerator();
-            if (!enumerator.MoveNext())
-                return default(T);
+            T maxElem;
 
-            var maxElem = enumerator.Current;
-            var maxVal = valuingFoo(maxElem);
-
-            while (enumerator.MoveNext())
+            using (var enumerator = container.GetEnumerator())
             {
-                var currVal = valuingFoo(enumerator.Current);
+                if (!enumerator.MoveNext())
+                    return default(T);
 
-                if (currVal.CompareTo(maxVal) > 0)
+                maxElem = enumerator.Current;
+                var maxVal = valuingFoo(maxElem);
+
+                while (enumerator.MoveNext())
                 {
+                    var currVal = valuingFoo(enumerator.Current);
+
+                    if (currVal.CompareTo(maxVal) <= 0) continue;
                     maxVal = currVal;
                     maxElem = enumerator.Current;
                 }
@@ -84,19 +86,21 @@ namespace ScoreAI.Extensions
         public static T MinOrDefault<T, TR>(this IEnumerable<T> container, Func<T, TR> valuingFoo)
             where TR : IComparable
         {
-            var enumerator = container.GetEnumerator();
-            if (!enumerator.MoveNext())
-                return default(T);
+            T minElem;
 
-            var minElem = enumerator.Current;
-            var minVal = valuingFoo(minElem);
-
-            while (enumerator.MoveNext())
+            using (var enumerator = container.GetEnumerator())
             {
-                var currVal = valuingFoo(enumerator.Current);
+                if (!enumerator.MoveNext())
+                    return default(T);
 
-                if (currVal.CompareTo(minVal) < 0)
+                minElem = enumerator.Current;
+                var minVal = valuingFoo(minElem);
+
+                while (enumerator.MoveNext())
                 {
+                    var currVal = valuingFoo(enumerator.Current);
+
+                    if (currVal.CompareTo(minVal) >= 0) continue;
                     minVal = currVal;
                     minElem = enumerator.Current;
                 }

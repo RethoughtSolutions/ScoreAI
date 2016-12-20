@@ -1,5 +1,5 @@
 ﻿//     File:  ScoreAI/ScoreAI/ISelector.cs
-//     Copyright (C) 2016 Rethought and SupportExTraGoZ
+//     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -15,25 +15,20 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.11.2016 8:49 PM
+//     Last Edited: 10.12.2016 12:11 AM
 
 namespace ScoreAI.Selector
 {
     #region Using Directives
 
-    using ScoreAI.Context;
     using ScoreAI.Qualifier;
 
     #endregion
 
     /// <summary>
-    /// The RootSelector interface.
+    ///     The RootSelector interface.
     /// </summary>
-    /// <typeparam name="T">
-    ///     The context type
-    /// </typeparam>
-    public interface ISelector<T>
-        where T : IContext
+    public interface ISelector
     {
         #region Public Methods and Operators
 
@@ -41,7 +36,7 @@ namespace ScoreAI.Selector
         ///     Adds a qualifier.
         /// </summary>
         /// <param name="qualifier">The qualifier.</param>
-        void AddQualifier(IQualifier<T> qualifier);
+        void AddQualifier(IQualifier qualifier);
 
         /// <summary>
         ///     Selects a Qualifier based on its score.
@@ -52,13 +47,13 @@ namespace ScoreAI.Selector
         /// <returns>
         ///     The <see cref="IQualifier" />.
         /// </returns>
-        IQualifier<T> Select(T context);
+        IQualifier Select();
 
         /// <summary>
         ///     Sets the default qualifier.
         /// </summary>
         /// <param name="qualifier">The qualifier.</param>
-        void SetDefaultQualifier(IQualifier<T> qualifier);
+        void SetDefaultQualifier(IQualifier qualifier);
 
         #endregion
     }

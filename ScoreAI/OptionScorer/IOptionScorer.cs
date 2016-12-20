@@ -21,17 +21,14 @@ namespace ScoreAI.OptionScorer
 {
     #region Using Directives
 
-    using ScoreAI.Context;
+    
 
     #endregion
 
     /// <summary>
     ///     The OptionScorer interface.
     /// </summary>
-    /// <typeparam name="TOption">
-    ///     TODO
-    /// </typeparam>
-    public interface IOptionScorer<in TOption, TContext> where TContext : IContext
+    public interface IOptionScorer
     {
         #region Public Methods and Operators
 
@@ -41,7 +38,7 @@ namespace ScoreAI.OptionScorer
         /// <param name="context">The context.</param>
         /// <param name="option">The option.</param>
         /// <returns>The score</returns>
-        float Score(TContext context, TOption option);
+        float Score();
 
         #endregion
     }
