@@ -1,5 +1,5 @@
 ﻿//     File:  ScoreAI/ScoreAI/SumWhileAboveThreshholdQualifier.cs
-//     Copyright (C) 2016 Rethought and SupportExTraGoZ
+//     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -15,13 +15,12 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.11.2016 8:29 PM
+//     Last Edited: 20.12.2016 6:04 PM
 
 namespace ScoreAI.Qualifier
 {
-    #region Using Directives
 
-    
+    #region Using Directives
 
     #endregion
 
@@ -33,9 +32,9 @@ namespace ScoreAI.Qualifier
         #region Fields
 
         /// <summary>
-        ///     The threshhold.
+        ///     The threshold.
         /// </summary>
-        private readonly float threshhold;
+        private readonly float threshold;
 
         #endregion
 
@@ -44,12 +43,12 @@ namespace ScoreAI.Qualifier
         /// <summary>
         ///     Initializes a new instance of the <see cref="SumWhileAboveThreshholdQualifier" /> class.
         /// </summary>
-        /// <param name="threshhold">
-        ///     The threshhold.
+        /// <param name="threshold">
+        ///     The threshold.
         /// </param>
-        public SumWhileAboveThreshholdQualifier(float threshhold)
+        public SumWhileAboveThreshholdQualifier(float threshold)
         {
-            this.threshhold = threshhold;
+            this.threshold = threshold;
         }
 
         #endregion
@@ -59,7 +58,6 @@ namespace ScoreAI.Qualifier
         /// <summary>
         ///     The score.
         /// </summary>
-        /// <param name="context">The context.</param>
         /// <returns>
         ///     The <see cref="float" />.
         /// </returns>
@@ -71,7 +69,7 @@ namespace ScoreAI.Qualifier
             {
                 var score = scorer.Score();
 
-                if (score > this.threshhold)
+                if (score > this.threshold)
                     sum += score;
                 else
                     break;

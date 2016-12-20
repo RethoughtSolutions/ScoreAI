@@ -1,5 +1,5 @@
 ﻿//     File:  ScoreAI/ScoreAI/AssemblyInfo.cs
-//     Copyright (C) 2016 Rethought and SupportExTraGoZ
+//     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 19.11.2016 12:22 AM
-//     Last Edited: 20.11.2016 8:29 PM
+//     Last Edited: 20.12.2016 6:04 PM
 
 #region Using Directives
 

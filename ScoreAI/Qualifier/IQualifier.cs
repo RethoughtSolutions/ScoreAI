@@ -1,5 +1,5 @@
 ﻿//     File:  ScoreAI/ScoreAI/IQualifier.cs
-//     Copyright (C) 2016 Rethought and SupportExTraGoZ
+//     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.11.2016 8:29 PM
+//     Last Edited: 20.12.2016 6:04 PM
 
 namespace ScoreAI.Qualifier
 {
@@ -29,7 +29,7 @@ namespace ScoreAI.Qualifier
     #endregion
 
     /// <summary>
-    /// The Qualifier interface.
+    ///     The Qualifier interface.
     /// </summary>
     public interface IQualifier
     {
@@ -43,7 +43,7 @@ namespace ScoreAI.Qualifier
         /// <summary>
         ///     Gets or sets the scorers.
         /// </summary>
-        IList<IContextualScorer> Scorers { get; set; }
+        IList<IScorer> Scorers { get; set; }
 
         #endregion
 
@@ -53,14 +53,11 @@ namespace ScoreAI.Qualifier
         ///     Adds a scorer.
         /// </summary>
         /// <param name="scorer">The scorer.</param>
-        void AddScorer(IContextualScorer scorer);
+        void AddScorer(IScorer scorer);
 
         /// <summary>
         ///     The score.
         /// </summary>
-        /// <param name="context">
-        ///     The context.
-        /// </param>
         /// <returns>
         ///     The <see cref="float" />.
         /// </returns>

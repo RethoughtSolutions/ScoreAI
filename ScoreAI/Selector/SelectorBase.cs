@@ -1,5 +1,5 @@
 ﻿//     File:  ScoreAI/ScoreAI/SelectorBase.cs
-//     Copyright (C) 2016 Rethought and SupportExTraGoZ
+//     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.11.2016 8:35 PM
+//     Last Edited: 20.12.2016 6:04 PM
 
 namespace ScoreAI.Selector
 {
@@ -60,9 +60,6 @@ namespace ScoreAI.Selector
         /// <summary>
         ///     Selects the Qualifier based on its score. Selection depends on the implementation.
         /// </summary>
-        /// <param name="context">
-        ///     The context.
-        /// </param>
         /// <returns>
         ///     The <see cref="QualifierBase" />.
         /// </returns>

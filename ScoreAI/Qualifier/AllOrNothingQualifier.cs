@@ -1,5 +1,5 @@
 ﻿//     File:  ScoreAI/ScoreAI/AllOrNothingQualifier.cs
-//     Copyright (C) 2016 Rethought and SupportExTraGoZ
+//     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -15,13 +15,12 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.11.2016 8:29 PM
+//     Last Edited: 20.12.2016 6:04 PM
 
 namespace ScoreAI.Qualifier
 {
-    #region Using Directives
 
-    
+    #region Using Directives
 
     #endregion
 
@@ -35,12 +34,12 @@ namespace ScoreAI.Qualifier
         /// <summary>
         ///     Initializes a new instance of the <see cref="AllOrNothingQualifier" /> class.
         /// </summary>
-        /// <param name="threshhold">
-        ///     The threshhold.
+        /// <param name="threshold">
+        ///     The threshold.
         /// </param>
-        public AllOrNothingQualifier(float threshhold = 0f)
+        public AllOrNothingQualifier(float threshold = 0f)
         {
-            this.Threshhold = threshhold;
+            this.Threshold = threshold;
         }
 
         #endregion
@@ -48,9 +47,9 @@ namespace ScoreAI.Qualifier
         #region Public Properties
 
         /// <summary>
-        ///     Gets or sets the threshhold.
+        ///     Gets or sets the threshold.
         /// </summary>
-        public float Threshhold { get; set; }
+        public float Threshold { get; set; }
 
         #endregion
 
@@ -59,7 +58,6 @@ namespace ScoreAI.Qualifier
         /// <summary>
         ///     The score.
         /// </summary>
-        /// <param name="context">The context.</param>
         /// <returns>
         ///     The <see cref="float" />.
         /// </returns>
@@ -71,7 +69,7 @@ namespace ScoreAI.Qualifier
             {
                 var score = scorer.Score();
 
-                if (score > this.Threshhold)
+                if (score > this.Threshold)
                     sum += score;
                 else
                     return 0f;

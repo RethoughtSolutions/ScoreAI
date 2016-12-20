@@ -1,5 +1,5 @@
-﻿//     File:  ScoreAI/ScoreAI/IOptionScorer.cs
-//     Copyright (C) 2016 Rethought and SupportExTraGoZ
+//     File:  ScoreAI/ScoreAI/ScorerBase.cs
+//     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -15,30 +15,29 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.11.2016 8:29 PM
+//     Last Edited: 20.12.2016 6:04 PM
 
-namespace ScoreAI.OptionScorer
+namespace ScoreAI.Scorer
 {
-    #region Using Directives
 
-    
+    #region Using Directives
 
     #endregion
 
     /// <summary>
-    ///     The OptionScorer interface.
+    ///     The contextual scorer base.
     /// </summary>
-    public interface IOptionScorer
+    public abstract class ScorerBase : IScorer
     {
         #region Public Methods and Operators
 
         /// <summary>
-        ///     Determines the score
+        ///     The score.
         /// </summary>
-        /// <param name="context">The context.</param>
-        /// <param name="option">The option.</param>
-        /// <returns>The score</returns>
-        float Score();
+        /// <returns>
+        ///     The <see cref="float" />.
+        /// </returns>
+        public abstract float Score();
 
         #endregion
     }

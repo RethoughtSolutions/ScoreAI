@@ -15,14 +15,20 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 03.12.2016 9:08 PM
-//     Last Edited: 10.12.2016 12:15 AM
+//     Last Edited: 20.12.2016 6:04 PM
 
 namespace ScoreAI.Clients
 {
+    /// <summary>
+    ///     The buildable ai client.
+    /// </summary>
     public abstract class BuildableAIClient : AIClient
     {
         #region Public Methods and Operators
 
+        /// <summary>
+        ///     Builds this instance.
+        /// </summary>
         public abstract void Build();
 
         #endregion

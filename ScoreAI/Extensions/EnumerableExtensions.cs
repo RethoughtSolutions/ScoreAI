@@ -15,7 +15,7 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 10.12.2016 12:26 AM
+//     Last Edited: 20.12.2016 6:04 PM
 
 namespace ScoreAI.Extensions
 {

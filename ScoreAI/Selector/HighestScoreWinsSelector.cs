@@ -1,4 +1,4 @@
-//     File:  Rethought Series/RethoughtAILib/HighestScoreWinsSelector.cs
+//     File:  ScoreAI/ScoreAI/HighestScoreWinsSelector.cs
 //     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
@@ -14,8 +14,8 @@
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-//     Created: 19.11.2016 12:22 AM
-//     Last Edited: 20.11.2016 7:26 PM
+//     Created: 20.11.2016 7:30 PM
+//     Last Edited: 20.12.2016 6:04 PM
 
 namespace ScoreAI.Selector
 {
@@ -27,18 +27,17 @@ namespace ScoreAI.Selector
     #endregion
 
     /// <summary>
-    /// The highest score wins selector.
+    ///     The highest score wins selector.
     /// </summary>
     public class HighestScoreWinsSelector : SelectorBase
     {
         #region Public Methods and Operators
 
         /// <summary>
-        /// Selects the Qualifier based on its score. The highest scoring qualifier wins.
+        ///     Selects the Qualifier based on its score. The highest scoring qualifier wins.
         /// </summary>
-        /// <param name="context">The context.</param>
         /// <returns>
-        /// The <see cref="QualifierBase" />.
+        ///     The <see cref="QualifierBase" />.
         /// </returns>
         public override IQualifier Select()
         {

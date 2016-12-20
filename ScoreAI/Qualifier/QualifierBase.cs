@@ -1,5 +1,5 @@
 ﻿//     File:  ScoreAI/ScoreAI/QualifierBase.cs
-//     Copyright (C) 2016 Rethought and SupportExTraGoZ
+//     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.11.2016 8:29 PM
+//     Last Edited: 20.12.2016 6:04 PM
 
 namespace ScoreAI.Qualifier
 {
@@ -33,18 +33,6 @@ namespace ScoreAI.Qualifier
     /// </summary>
     public abstract class QualifierBase : IQualifier
     {
-        protected QualifierBase(string name)
-        {
-            this.Name = name;
-        }
-
-        protected QualifierBase()
-        {
-
-        }
-
-        public string Name { get; set; }
-
         #region Public Properties
 
         /// <summary>
@@ -55,7 +43,7 @@ namespace ScoreAI.Qualifier
         /// <summary>
         ///     Gets or sets the scorers.
         /// </summary>
-        public IList<IContextualScorer> Scorers { get; set; } = new List<IContextualScorer>();
+        public IList<IScorer> Scorers { get; set; } = new List<IScorer>();
 
         #endregion
 
@@ -65,7 +53,7 @@ namespace ScoreAI.Qualifier
         ///     Adds a scorer.
         /// </summary>
         /// <param name="scorer">The scorer.</param>
-        public void AddScorer(IContextualScorer scorer)
+        public void AddScorer(IScorer scorer)
         {
             this.Scorers.Add(scorer);
         }
@@ -73,7 +61,6 @@ namespace ScoreAI.Qualifier
         /// <summary>
         ///     The score.
         /// </summary>
-        /// <param name="context">The context.</param>
         /// <returns>
         ///     The <see cref="float" />.
         /// </returns>
