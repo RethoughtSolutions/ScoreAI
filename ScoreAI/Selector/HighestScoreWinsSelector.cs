@@ -39,10 +39,7 @@ namespace ScoreAI.Selector
         /// <returns>
         ///     The <see cref="QualifierBase" />.
         /// </returns>
-        public override IQualifier Select()
-        {
-            return this.Qualifiers.MaxOrDefault(x => x.Score());
-        }
+        public override IQualifier Select() => this.Qualifiers.MaxOrDefault(x => x.Score());
 
         #endregion
     }

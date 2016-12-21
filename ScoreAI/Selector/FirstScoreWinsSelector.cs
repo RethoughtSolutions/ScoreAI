@@ -66,7 +66,10 @@ namespace ScoreAI.Selector
         {
             foreach (var qualifier in this.Qualifiers)
             {
-                if (!(qualifier.Score() > this.threshold)) continue;
+                if (!(qualifier.Score() > this.threshold))
+                {
+                    continue;
+                }
 
                 return qualifier;
             }
