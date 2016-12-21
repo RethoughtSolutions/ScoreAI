@@ -19,15 +19,17 @@
 
 namespace ScoreAI.Qualifier
 {
+    using System;
+    using System.Linq;
 
     #region Using Directives
 
     #endregion
 
     /// <summary>
-    ///     The sum while above threshhold qualifier.
+    ///     The sum while above threshold qualifier.
     /// </summary>
-    public class SumWhileAboveThreshholdQualifier : QualifierBase
+    public class SumWhileAboveThresholdQualifier : QualifierBase
     {
         #region Fields
 
@@ -41,12 +43,12 @@ namespace ScoreAI.Qualifier
         #region Constructors and Destructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="SumWhileAboveThreshholdQualifier" /> class.
+        ///     Initializes a new instance of the <see cref="SumWhileAboveThresholdQualifier" /> class.
         /// </summary>
         /// <param name="threshold">
         ///     The threshold.
         /// </param>
-        public SumWhileAboveThreshholdQualifier(float threshold)
+        public SumWhileAboveThresholdQualifier(float threshold)
         {
             this.threshold = threshold;
         }
@@ -61,22 +63,7 @@ namespace ScoreAI.Qualifier
         /// <returns>
         ///     The <see cref="float" />.
         /// </returns>
-        public override float Score()
-        {
-            var sum = 0f;
-
-            foreach (var scorer in this.Scorers)
-            {
-                var score = scorer.Score();
-
-                if (score > this.threshold)
-                    sum += score;
-                else
-                    break;
-            }
-
-            return sum;
-        }
+        public override float Score() => this.Scorers.Where(s => s.Score() > this.threshold).Sum(s => s.Score());
 
         #endregion
     }

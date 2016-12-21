@@ -19,6 +19,7 @@
 
 namespace ScoreAI.Qualifier
 {
+    using System.Linq;
 
     #region Using Directives
 
@@ -61,23 +62,11 @@ namespace ScoreAI.Qualifier
         /// <returns>
         ///     The <see cref="float" />.
         /// </returns>
-        public override float Score()
-        {
-            var sum = 0f;
+        public override float Score() => 
+            this.Scorers.Any(s => s.Score() < this.Threshold) // if theres any under threshold
+            ? 0f // return null
+            : this.Scorers.Sum(s => s.Score()); // otherwise return sum
 
-            foreach (var scorer in this.Scorers)
-            {
-                var score = scorer.Score();
-
-                if (score > this.Threshold)
-                    sum += score;
-                else
-                    return 0f;
-            }
-
-            return sum;
+            #endregion
         }
-
-        #endregion
-    }
 }

@@ -58,7 +58,7 @@
     <Compile Include="Qualifier\IQualifier.cs" />
     <Compile Include="Qualifier\QualifierBase.cs" />
     <Compile Include="Qualifier\SumOfChildrenQualifier.cs" />
-    <Compile Include="Qualifier\SumWhileAboveThreshholdQualifier.cs" />
+    <Compile Include="Qualifier\SumWhileAboveThresholdQualifier.cs" />
     <Compile Include="Scorer\ScorerBase.cs" />
     <Compile Include="Scorer\IScorer.cs" />
     <Compile Include="Scorer\LinkedScorer.cs" />
