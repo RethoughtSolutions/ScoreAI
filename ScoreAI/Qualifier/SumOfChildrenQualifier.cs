@@ -38,10 +38,7 @@ namespace ScoreAI.Qualifier
         /// <returns>
         ///     The <see cref="float" />.
         /// </returns>
-        public override float Score()
-        {
-            return this.Scorers.Sum(x => x.Score());
-        }
+        public override float Score() => this.Scorers.Sum(x => x.Score());
 
         #endregion
     }

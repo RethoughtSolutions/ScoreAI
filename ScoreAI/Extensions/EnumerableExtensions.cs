@@ -36,7 +36,7 @@ namespace ScoreAI.Extensions
         /// <summary>
         ///     Returns the max or default element
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">The type.</typeparam>
         /// <typeparam name="TR">The type of the r.</typeparam>
         /// <param name="container">The container.</param>
         /// <param name="valuingFoo">The valuing foo.</param>
@@ -49,8 +49,10 @@ namespace ScoreAI.Extensions
             using (var enumerator = container.GetEnumerator())
             {
                 if (!enumerator.MoveNext())
+                {
                     return default(T);
-
+                }
+                    
                 maxElem = enumerator.Current;
                 var maxVal = valuingFoo(maxElem);
 
@@ -58,7 +60,11 @@ namespace ScoreAI.Extensions
                 {
                     var currVal = valuingFoo(enumerator.Current);
 
-                    if (currVal.CompareTo(maxVal) <= 0) continue;
+                    if (currVal.CompareTo(maxVal) <= 0)
+                    {
+                        continue;
+                    }
+
                     maxVal = currVal;
                     maxElem = enumerator.Current;
                 }
@@ -82,7 +88,7 @@ namespace ScoreAI.Extensions
         /// <param name="valuingFoo">
         ///     The comparing function.
         /// </param>
-        /// <returns></returns>
+        /// <returns>the min or default element</returns>
         public static T MinOrDefault<T, TR>(this IEnumerable<T> container, Func<T, TR> valuingFoo)
             where TR : IComparable
         {
@@ -91,7 +97,9 @@ namespace ScoreAI.Extensions
             using (var enumerator = container.GetEnumerator())
             {
                 if (!enumerator.MoveNext())
+                {
                     return default(T);
+                }
 
                 minElem = enumerator.Current;
                 var minVal = valuingFoo(minElem);
@@ -100,7 +108,11 @@ namespace ScoreAI.Extensions
                 {
                     var currVal = valuingFoo(enumerator.Current);
 
-                    if (currVal.CompareTo(minVal) >= 0) continue;
+                    if (currVal.CompareTo(minVal) >= 0)
+                    {
+                        continue;
+                    }
+
                     minVal = currVal;
                     minElem = enumerator.Current;
                 }
