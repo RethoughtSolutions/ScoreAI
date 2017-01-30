@@ -15,7 +15,7 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.12.2016 6:04 PM
+//     Last Edited: 29.01.2017 5:40 PM
 
 namespace ScoreAI.Selector
 {
@@ -26,32 +26,25 @@ namespace ScoreAI.Selector
     #endregion
 
     /// <summary>
-    ///     The RootSelector interface.
+    /// The RootSelector interface.
     /// </summary>
-    public interface ISelector
+    /// <typeparam name="T">
+    ///     Defines the type that gets qualified
+    /// </typeparam>
+    public interface ISelector<T>
     {
-        #region Public Methods and Operators
-
         /// <summary>
         ///     Adds a qualifier.
         /// </summary>
         /// <param name="qualifier">The qualifier.</param>
-        void AddQualifier(IQualifier qualifier);
+        void AddQualifier(IQualifier<T> qualifier);
 
         /// <summary>
         ///     Selects a Qualifier based on its score.
         /// </summary>
         /// <returns>
-        ///     The <see cref="IQualifier" />.
+        ///     <see cref="IQualifier{T}" />
         /// </returns>
-        IQualifier Select();
-
-        /// <summary>
-        ///     Sets the default qualifier.
-        /// </summary>
-        /// <param name="qualifier">The qualifier.</param>
-        void SetDefaultQualifier(IQualifier qualifier);
-
-        #endregion
+        IQualifier<T> Select();
     }
 }

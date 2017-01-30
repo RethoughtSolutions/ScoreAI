@@ -1,4 +1,4 @@
-﻿//     File:  ScoreAI/ScoreAI/SumWhileAboveThreshholdQualifier.cs
+﻿//     File:  ScoreAI/ScoreAI/SumWhileAboveThresholdQualifierWithScorers.cs
 //     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
@@ -15,45 +15,30 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.12.2016 6:04 PM
+//     Last Edited: 28.12.2016 5:24 PM
 
 namespace ScoreAI.Qualifier
 {
-
-    #region Using Directives
-
-    #endregion
-
     /// <summary>
-    ///     The sum while above threshhold qualifier.
+    ///     The sum while above threshold qualifier.
     /// </summary>
-    public class SumWhileAboveThreshholdQualifier : QualifierBase
+    public class SumWhileAboveThresholdQualifierWithScorers<T> : QualifierWithScorersBase<T>
     {
-        #region Fields
-
         /// <summary>
         ///     The threshold.
         /// </summary>
         private readonly float threshold;
 
-        #endregion
-
-        #region Constructors and Destructors
-
         /// <summary>
-        ///     Initializes a new instance of the <see cref="SumWhileAboveThreshholdQualifier" /> class.
+        ///     Initializes a new instance of the <see cref="SumWhileAboveThresholdQualifierWithScorers" /> class.
         /// </summary>
         /// <param name="threshold">
         ///     The threshold.
         /// </param>
-        public SumWhileAboveThreshholdQualifier(float threshold)
+        public SumWhileAboveThresholdQualifierWithScorers(float threshold)
         {
             this.threshold = threshold;
         }
-
-        #endregion
-
-        #region Public Methods and Operators
 
         /// <summary>
         ///     The score.
@@ -77,7 +62,5 @@ namespace ScoreAI.Qualifier
 
             return sum;
         }
-
-        #endregion
     }
 }

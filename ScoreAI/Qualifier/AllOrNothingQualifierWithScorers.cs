@@ -1,4 +1,4 @@
-﻿//     File:  ScoreAI/ScoreAI/FixedScoreQualifier.cs
+﻿//     File:  ScoreAI/ScoreAI/AllOrNothingQualifierWithScorers.cs
 //     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
@@ -15,57 +15,54 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.12.2016 6:04 PM
+//     Last Edited: 29.01.2017 5:42 PM
 
 namespace ScoreAI.Qualifier
 {
-
-    #region Using Directives
-
-    #endregion
-
     /// <summary>
-    ///     The fixed fixedScore qualifier.
+    ///     The all or nothing qualifier.
     /// </summary>
-    public class FixedScoreQualifier : QualifierBase
+    public class AllOrNothingQualifierWithScorers<T> : QualifierWithScorersBase<T>
     {
-        #region Fields
-
         /// <summary>
-        ///     The fixed fixedScore.
+        ///     Initializes a new instance of the <see cref="AllOrNothingQualifierWithScorers" /> class.
         /// </summary>
-        private readonly float fixedScore;
-
-        #endregion
-
-        #region Constructors and Destructors
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="FixedScoreQualifier" /> class.
-        /// </summary>
-        /// <param name="fixedScore">
-        ///     The fixedScore.
+        /// <param name="threshold">
+        ///     The threshold.
         /// </param>
-        public FixedScoreQualifier(float fixedScore = 0f)
+        public AllOrNothingQualifierWithScorers(T qualifiedItem, float threshold = 0f)
         {
-            this.fixedScore = fixedScore;
+            this.QualifiedItem = qualifiedItem;
+            this.Threshold = threshold;
         }
 
-        #endregion
-
-        #region Public Methods and Operators
 
         /// <summary>
-        ///     The fixedScore.
+        ///     Gets or sets the threshold.
+        /// </summary>
+        public float Threshold { get; set; }
+
+        /// <summary>
+        ///     The score.
         /// </summary>
         /// <returns>
         ///     The <see cref="float" />.
         /// </returns>
         public override float Score()
         {
-            return this.fixedScore;
-        }
+            var sum = 0f;
 
-        #endregion
+            foreach (var scorer in this.Scorers)
+            {
+                var score = scorer.Score();
+
+                if (score > this.Threshold)
+                    sum += score;
+                else
+                    return 0f;
+            }
+
+            return sum;
+        }
     }
 }

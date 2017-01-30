@@ -1,4 +1,4 @@
-﻿//     File:  ScoreAI/ScoreAI/ActionBase.cs
+﻿//     File:  ScoreAI/ScoreAI/SumOfChildrenQualifierWithScorers.cs
 //     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
@@ -15,27 +15,30 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.12.2016 6:04 PM
+//     Last Edited: 28.12.2016 5:24 PM
 
-namespace ScoreAI.Action
+namespace ScoreAI.Qualifier
 {
-
     #region Using Directives
+
+    using System.Linq;
 
     #endregion
 
     /// <summary>
-    ///     The action base.
+    ///     The sum of children qualifier.
     /// </summary>
-    public abstract class ActionBase : IAction
+    public class SumOfChildrenQualifierWithScorers<T> : QualifierWithScorersBase<T>
     {
-        #region Public Methods and Operators
-
         /// <summary>
-        ///     Executes the action
+        ///     The score.
         /// </summary>
-        public abstract void Execute();
-
-        #endregion
+        /// <returns>
+        ///     The <see cref="float" />.
+        /// </returns>
+        public override float Score()
+        {
+            return this.Scorers.Sum(x => x.Score());
+        }
     }
 }

@@ -15,7 +15,7 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.12.2016 6:04 PM
+//     Last Edited: 28.12.2016 5:24 PM
 
 namespace ScoreAI.Extensions
 {
@@ -31,8 +31,6 @@ namespace ScoreAI.Extensions
     /// </summary>
     public static class EnumerableExtensions
     {
-        #region Public Methods and Operators
-
         /// <summary>
         ///     Returns the max or default element
         /// </summary>
@@ -108,7 +106,5 @@ namespace ScoreAI.Extensions
 
             return minElem;
         }
-
-        #endregion
     }
 }

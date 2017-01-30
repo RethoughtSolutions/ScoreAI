@@ -1,4 +1,4 @@
-﻿//     File:  ScoreAI/ScoreAI/BuildableAIClient.cs
+﻿//     File:  ScoreAI/ScoreAI/IAIClient.cs
 //     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
@@ -15,22 +15,29 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 03.12.2016 9:08 PM
-//     Last Edited: 20.12.2016 6:04 PM
+//     Last Edited: 28.12.2016 5:24 PM
 
-namespace ScoreAI.Clients
+namespace ScoreAI.Client
 {
+    #region Using Directives
+
+    using ScoreAI.Selector;
+
+    #endregion
+
     /// <summary>
-    ///     The buildable ai client.
+    ///     The AiClient interface.
     /// </summary>
-    public abstract class BuildableAIClient : AIClient
+    public interface IAIClient<T>
     {
-        #region Public Methods and Operators
+        /// <summary>
+        ///     Gets or sets the selector.
+        /// </summary>
+        SelectorBase<T> RootSelector { get; set; }
 
         /// <summary>
-        ///     Builds this instance.
+        ///     Ticks this instance.
         /// </summary>
-        public abstract void Build();
-
-        #endregion
+        void Tick();
     }
 }

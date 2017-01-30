@@ -15,7 +15,7 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 22.11.2016 5:58 PM
-//     Last Edited: 20.12.2016 6:04 PM
+//     Last Edited: 28.12.2016 5:24 PM
 
 namespace ScoreAI.Scorer
 {
@@ -28,31 +28,21 @@ namespace ScoreAI.Scorer
     /// <summary>
     ///     The linked scorer. Used to nest scorers.
     /// </summary>
-    public class LinkedScorer : IScorer
+    public class LinkedScorer<T> : IScorer
     {
-        #region Fields
-
         /// <summary>
         ///     The qualifier
         /// </summary>
-        private readonly IQualifier qualifier;
-
-        #endregion
-
-        #region Constructors and Destructors
+        private readonly IQualifier<T> qualifier;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="LinkedScorer" /> class.
         /// </summary>
         /// <param name="qualifier">The qualifier.</param>
-        public LinkedScorer(IQualifier qualifier)
+        public LinkedScorer(IQualifier<T> qualifier)
         {
             this.qualifier = qualifier;
         }
-
-        #endregion
-
-        #region Public Methods and Operators
 
         /// <summary>
         ///     The score.
@@ -64,7 +54,5 @@ namespace ScoreAI.Scorer
         {
             return this.qualifier.Score();
         }
-
-        #endregion
     }
 }

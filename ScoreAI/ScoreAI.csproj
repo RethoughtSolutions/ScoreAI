@@ -44,21 +44,18 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clients\BuildableAIClient.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Action\ActionBase.cs" />
-    <Compile Include="Action\CompositeAction.cs" />
     <Compile Include="Action\IAction.cs" />
-    <Compile Include="Action\LinkedAction.cs" />
-    <Compile Include="Clients\AIClient.cs" />
+    <Compile Include="Action\SystemAction.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Client\AIClient.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
-    <Compile Include="Clients\IAIClient.cs" />
-    <Compile Include="Qualifier\AllOrNothingQualifier.cs" />
-    <Compile Include="Qualifier\FixedScoreQualifier.cs" />
+    <Compile Include="Client\IAIClient.cs" />
+    <Compile Include="Qualifier\AllOrNothingQualifierWithScorers.cs" />
+    <Compile Include="Qualifier\FixedScoreQualifierWithScorers.cs" />
     <Compile Include="Qualifier\IQualifier.cs" />
-    <Compile Include="Qualifier\QualifierBase.cs" />
-    <Compile Include="Qualifier\SumOfChildrenQualifier.cs" />
-    <Compile Include="Qualifier\SumWhileAboveThreshholdQualifier.cs" />
+    <Compile Include="Qualifier\QualifierWithScorersBase.cs" />
+    <Compile Include="Qualifier\SumOfChildrenQualifierWithScorers.cs" />
+    <Compile Include="Qualifier\SumWhileAboveThresholdQualifierWithScorers.cs" />
     <Compile Include="Scorer\ScorerBase.cs" />
     <Compile Include="Scorer\IScorer.cs" />
     <Compile Include="Scorer\LinkedScorer.cs" />
@@ -67,6 +64,7 @@
     <Compile Include="Selector\ISelector.cs" />
     <Compile Include="Selector\SelectorBase.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>
     <VisualStudio AllowExistingFolder="true" />

@@ -1,4 +1,4 @@
-﻿//     File:  ScoreAI/ScoreAI/AIClient.cs
+﻿//     File:  ScoreAI/ScoreAI/QualifierWithScorersBase.cs
 //     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
@@ -14,43 +14,40 @@
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-//     Created: 03.12.2016 9:08 PM
-//     Last Edited: 20.12.2016 6:04 PM
+//     Created: 20.11.2016 7:30 PM
+//     Last Edited: 28.12.2016 5:24 PM
 
-namespace ScoreAI.Clients
+namespace ScoreAI.Qualifier
 {
     #region Using Directives
 
-    using ScoreAI.Selector;
+    using System.Collections.Generic;
+
+    using ScoreAI.Scorer;
 
     #endregion
 
     /// <summary>
-    ///     The AI client.
+    ///     The qualifier base.
     /// </summary>
-    public class AIClient : IAIClient
+    public abstract class QualifierWithScorersBase<T> : IQualifier<T>
     {
-        #region Public Properties
+        /// <summary>
+        ///     Gets or sets the scorers.
+        /// </summary>
+        public IList<IScorer> Scorers { get; set; } = new List<IScorer>();
 
         /// <summary>
-        ///     Gets or sets the selector.
+        ///     Adds a scorer.
         /// </summary>
-        public SelectorBase RootSelector { get; set; }
-
-        #endregion
-
-        #region Public Methods and Operators
-
-        /// <summary>
-        ///     Ticks this instance.
-        /// </summary>
-        public virtual void Tick()
+        /// <param name="scorer">The scorer.</param>
+        public virtual void AddScorer(IScorer scorer)
         {
-            var qualifier = this.RootSelector.Select();
-
-            qualifier?.Action?.Execute();
+            this.Scorers.Add(scorer);
         }
 
-        #endregion
+        public T QualifiedItem { get; set; }
+
+        public abstract float Score();
     }
 }

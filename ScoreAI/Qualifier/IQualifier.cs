@@ -15,45 +15,28 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.12.2016 6:04 PM
+//     Last Edited: 28.12.2016 5:24 PM
 
 namespace ScoreAI.Qualifier
 {
     #region Using Directives
 
-    using System.Collections.Generic;
-
     using ScoreAI.Action;
-    using ScoreAI.Scorer;
 
     #endregion
 
     /// <summary>
     ///     The Qualifier interface.
     /// </summary>
-    public interface IQualifier
+    public interface IQualifier<T>
     {
-        #region Public Properties
-
         /// <summary>
-        ///     Gets or sets the action.
+        /// Gets or sets the qualified type.
         /// </summary>
-        IAction Action { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the scorers.
-        /// </summary>
-        IList<IScorer> Scorers { get; set; }
-
-        #endregion
-
-        #region Public Methods and Operators
-
-        /// <summary>
-        ///     Adds a scorer.
-        /// </summary>
-        /// <param name="scorer">The scorer.</param>
-        void AddScorer(IScorer scorer);
+        /// <value>
+        /// The type of the qualified.
+        /// </value>
+        T QualifiedItem { get; set; }
 
         /// <summary>
         ///     The score.
@@ -62,13 +45,5 @@ namespace ScoreAI.Qualifier
         ///     The <see cref="float" />.
         /// </returns>
         float Score();
-
-        /// <summary>
-        ///     Sets the action.
-        /// </summary>
-        /// <param name="action">The action.</param>
-        void SetAction(IAction action);
-
-        #endregion
     }
 }

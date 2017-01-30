@@ -15,7 +15,7 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.12.2016 6:04 PM
+//     Last Edited: 28.12.2016 5:24 PM
 
 namespace ScoreAI.Selector
 {
@@ -30,29 +30,18 @@ namespace ScoreAI.Selector
     /// <summary>
     ///     The selector.
     /// </summary>
-    public abstract class SelectorBase : ISelector
+    public abstract class SelectorBase<T> : ISelector<T>
     {
-        #region Public Properties
-
-        /// <summary>
-        ///     Gets or sets the default qualifier. Which gets used when no qualifier scored above a threshold.
-        /// </summary>
-        public IQualifier DefaultQualifier { get; set; } = new FixedScoreQualifier();
-
         /// <summary>
         ///     Gets or sets the qualifiers.
         /// </summary>
-        public List<IQualifier> Qualifiers { get; set; } = new List<IQualifier>();
-
-        #endregion
-
-        #region Public Methods and Operators
+        public List<IQualifier<T>> Qualifiers { get; set; } = new List<IQualifier<T>>();
 
         /// <summary>
         ///     Adds a qualifier.
         /// </summary>
         /// <param name="qualifier">The qualifier.</param>
-        public void AddQualifier(IQualifier qualifier)
+        public void AddQualifier(IQualifier<T> qualifier)
         {
             this.Qualifiers.Add(qualifier);
         }
@@ -61,19 +50,8 @@ namespace ScoreAI.Selector
         ///     Selects the Qualifier based on its score. Selection depends on the implementation.
         /// </summary>
         /// <returns>
-        ///     The <see cref="QualifierBase" />.
+        ///     The <see cref="QualifierWithScorersBase" />.
         /// </returns>
-        public abstract IQualifier Select();
-
-        /// <summary>
-        ///     Sets the default qualifier.
-        /// </summary>
-        /// <param name="qualifier">The qualifier.</param>
-        public void SetDefaultQualifier(IQualifier qualifier)
-        {
-            this.DefaultQualifier = qualifier;
-        }
-
-        #endregion
+        public abstract IQualifier<T> Select();
     }
 }

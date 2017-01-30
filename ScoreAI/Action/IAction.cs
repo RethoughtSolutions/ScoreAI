@@ -14,28 +14,19 @@
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-//     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.12.2016 6:04 PM
+//     Created: 28.12.2016 4:04 PM
+//     Last Edited: 28.12.2016 5:24 PM
 
 namespace ScoreAI.Action
 {
-
-    #region Using Directives
-
-    #endregion
-
     /// <summary>
-    ///     The ActionBase interface.
+    ///     The Action interface.
     /// </summary>
     public interface IAction
     {
-        #region Public Methods and Operators
-
         /// <summary>
-        ///     The executing method
+        ///     Executes this instance.
         /// </summary>
         void Execute();
-
-        #endregion
     }
 }

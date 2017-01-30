@@ -1,4 +1,4 @@
-﻿//     File:  ScoreAI/ScoreAI/SumOfChildrenQualifier.cs
+﻿//     File:  ScoreAI/ScoreAI/AIClient.cs
 //     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
@@ -14,35 +14,39 @@
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-//     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.12.2016 6:04 PM
+//     Created: 03.12.2016 9:08 PM
+//     Last Edited: 18.01.2017 12:26 AM
 
-namespace ScoreAI.Qualifier
+namespace ScoreAI.Client
 {
     #region Using Directives
 
-    using System.Linq;
+    #region Using Directives
+
+    using ScoreAI.Action;
+    using ScoreAI.Selector;
+
+    #endregion
 
     #endregion
 
     /// <summary>
-    ///     The sum of children qualifier.
+    ///     The AI client.
     /// </summary>
-    public class SumOfChildrenQualifier : QualifierBase
+    public abstract class AIActionClient : IAIClient<IAction>
     {
-        #region Public Methods and Operators
+        public SelectorBase<IAction> RootSelector { get; set; }
 
         /// <summary>
-        ///     The score.
+        ///     Ticks this instance.
         /// </summary>
-        /// <returns>
-        ///     The <see cref="float" />.
-        /// </returns>
-        public override float Score()
+        public virtual void Tick()
         {
-            return this.Scorers.Sum(x => x.Score());
-        }
+            var qualifier = this.RootSelector.Select();
 
-        #endregion
+            var action = qualifier.QualifiedItem;
+
+            action.Execute();
+        }
     }
 }

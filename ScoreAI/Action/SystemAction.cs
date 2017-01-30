@@ -1,4 +1,4 @@
-﻿//     File:  ScoreAI/ScoreAI/LinkedAction.cs
+﻿//     File:  ScoreAI/ScoreAI/SystemAction.cs
 //     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
@@ -14,56 +14,42 @@
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-//     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.12.2016 6:04 PM
+//     Created: 28.12.2016 5:25 PM
+//     Last Edited: 28.12.2016 5:26 PM
 
 namespace ScoreAI.Action
 {
     #region Using Directives
 
-    using ScoreAI.Selector;
+    using System;
 
     #endregion
 
     /// <summary>
-    ///     Used to link a selector to a qualifier
+    /// The system action. Covers System.Action.
     /// </summary>
-    public class LinkedAction : ActionBase
+    public class SystemAction : IAction
     {
-        #region Fields
+        /// <summary>
+        /// The action
+        /// </summary>
+        private readonly Action action;
 
         /// <summary>
-        ///     The selector
+        /// Initializes a new instance of the <see cref="SystemAction"/> class.
         /// </summary>
-        private readonly ISelector selector;
-
-        #endregion
-
-        #region Constructors and Destructors
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="LinkedAction" /> class.
-        /// </summary>
-        /// <param name="selector">The selector.</param>
-        public LinkedAction(ISelector selector)
+        /// <param name="action">The action.</param>
+        public SystemAction(Action action)
         {
-            this.selector = selector;
+            this.action = action;
         }
 
-        #endregion
-
-        #region Public Methods and Operators
-
         /// <summary>
-        ///     Executes the action
+        /// Executes this instance.
         /// </summary>
-        public override void Execute()
+        public void Execute()
         {
-            var qualifier = this.selector.Select();
-
-            qualifier?.Action?.Execute();
+            this.action.Invoke();
         }
-
-        #endregion
     }
 }

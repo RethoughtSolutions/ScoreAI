@@ -1,4 +1,4 @@
-﻿//     File:  ScoreAI/ScoreAI/CompositeAction.cs
+﻿//     File:  ScoreAI/ScoreAI/FixedScoreQualifierWithScorers.cs
 //     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
@@ -15,46 +15,42 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.12.2016 6:04 PM
+//     Last Edited: 28.12.2016 5:24 PM
 
-namespace ScoreAI.Action
+namespace ScoreAI.Qualifier
 {
-    #region Using Directives
-
-    using System.Collections.Generic;
-
-    #endregion
-
     /// <summary>
-    ///     The composite action.
+    ///     The fixed fixedScore qualifier.
     /// </summary>
-    public class CompositeAction : ActionBase
+    public class FixedScoreQualifierWithScorers<T> : IQualifier<T>
     {
-        #region Public Properties
+        /// <summary>
+        ///     The fixed fixedScore.
+        /// </summary>
+        private readonly float fixedScore;
 
         /// <summary>
-        ///     Gets or sets the actions.
+        ///     Initializes a new instance of the <see cref="FixedScoreQualifierWithScorers" /> class.
         /// </summary>
-        /// <value>
-        ///     The actions.
-        /// </value>
-        public List<IAction> Actions { get; set; } = new List<IAction>();
-
-        #endregion
-
-        #region Public Methods and Operators
-
-        /// <summary>
-        ///     Executes the action
-        /// </summary>
-        public override void Execute()
+        /// <param name="fixedScore">
+        ///     The fixedScore.
+        /// </param>
+        public FixedScoreQualifierWithScorers(float fixedScore = 0f)
         {
-            foreach (var action in this.Actions)
-            {
-                action.Execute();
-            }
+            this.fixedScore = fixedScore;
         }
 
-        #endregion
+        public T QualifiedItem { get; set; }
+
+        /// <summary>
+        ///     The fixedScore.
+        /// </summary>
+        /// <returns>
+        ///     The <see cref="float" />.
+        /// </returns>
+        public float Score()
+        {
+            return this.fixedScore;
+        }
     }
 }

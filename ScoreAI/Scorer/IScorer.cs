@@ -15,22 +15,15 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 20.12.2016 6:04 PM
+//     Last Edited: 28.12.2016 5:24 PM
 
 namespace ScoreAI.Scorer
 {
-
-    #region Using Directives
-
-    #endregion
-
     /// <summary>
     ///     The ContextualScorer interface.
     /// </summary>
     public interface IScorer
     {
-        #region Public Methods and Operators
-
         /// <summary>
         ///     The score.
         /// </summary>
@@ -38,7 +31,5 @@ namespace ScoreAI.Scorer
         ///     The <see cref="float" />.
         /// </returns>
         float Score();
-
-        #endregion
     }
 }
