@@ -15,26 +15,20 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 28.12.2016 5:24 PM
+//     Last Edited: 31.01.2017 6:13 AM
 
 namespace ScoreAI.Qualifier
 {
-    #region Using Directives
-
-    using ScoreAI.Action;
-
-    #endregion
-
     /// <summary>
     ///     The Qualifier interface.
     /// </summary>
     public interface IQualifier<T>
     {
         /// <summary>
-        /// Gets or sets the qualified type.
+        ///     Gets or sets the qualified type.
         /// </summary>
         /// <value>
-        /// The type of the qualified.
+        ///     The type of the qualified.
         /// </value>
         T QualifiedItem { get; set; }
 

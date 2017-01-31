@@ -15,7 +15,7 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 22.11.2016 5:58 PM
-//     Last Edited: 28.12.2016 5:24 PM
+//     Last Edited: 31.01.2017 6:13 AM
 
 namespace ScoreAI.Scorer
 {

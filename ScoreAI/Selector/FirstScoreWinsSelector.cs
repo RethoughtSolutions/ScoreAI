@@ -15,10 +15,11 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 10.01.2017 3:52 PM
+//     Last Edited: 31.01.2017 6:13 AM
 
 namespace ScoreAI.Selector
 {
+    using System.Collections.Generic;
     #region Using Directives
 
     using System.Linq;
@@ -32,21 +33,13 @@ namespace ScoreAI.Selector
     /// </summary>
     public class FirstScoreWinsSelector<T> : SelectorBase<T>
     {
-        /// <summary>
-        ///     The threshold.
-        /// </summary>
-        private readonly float threshold;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="FirstScoreWinsSelector" /> class.
-        /// </summary>
-        /// <param name="threshold">
-        ///     The threshold.
-        /// </param>
-        public FirstScoreWinsSelector(float threshold = 0f)
+        public FirstScoreWinsSelector(IList<IQualifier<T>> qualifierList, float threshold = 0f) : base(qualifierList)
         {
-            this.threshold = threshold;
+            this.Threshold = threshold;
         }
+
+
+        public float Threshold { get; set; }
 
         /// <summary>
         ///     Selects the Qualifier based on its score. The first Qualifier that scores above a threshold wins.
@@ -56,7 +49,7 @@ namespace ScoreAI.Selector
         /// </returns>
         public override IQualifier<T> Select()
         {
-            return this.Qualifiers.FirstOrDefault(qualifier => qualifier.Score() > this.threshold);
+            return this.QualifiersList.FirstOrDefault(qualifier => qualifier.Score() > this.Threshold);
         }
     }
 }

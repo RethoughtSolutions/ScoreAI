@@ -15,7 +15,7 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 29.01.2017 5:40 PM
+//     Last Edited: 31.01.2017 6:13 AM
 
 namespace ScoreAI.Selector
 {
@@ -26,7 +26,7 @@ namespace ScoreAI.Selector
     #endregion
 
     /// <summary>
-    /// The RootSelector interface.
+    ///     The RootSelector interface.
     /// </summary>
     /// <typeparam name="T">
     ///     Defines the type that gets qualified

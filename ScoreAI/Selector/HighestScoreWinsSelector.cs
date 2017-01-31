@@ -15,13 +15,12 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 28.12.2016 5:24 PM
+//     Last Edited: 31.01.2017 6:13 AM
 
 namespace ScoreAI.Selector
 {
+    using System.Collections.Generic;
     #region Using Directives
-
-    using System;
 
     using ScoreAI.Extensions;
     using ScoreAI.Qualifier;
@@ -33,6 +32,15 @@ namespace ScoreAI.Selector
     /// </summary>
     public class HighestScoreWinsSelector<T> : SelectorBase<T>
     {
+        public HighestScoreWinsSelector(IList<IQualifier<T>> qualifierList) : base(qualifierList)
+        {
+        }
+
+        public HighestScoreWinsSelector()
+        {
+            
+        }
+
         /// <summary>
         ///     Selects the Qualifier based on its score. The highest scoring qualifier wins.
         /// </summary>
@@ -41,7 +49,7 @@ namespace ScoreAI.Selector
         /// </returns>
         public override IQualifier<T> Select()
         {
-            return this.Qualifiers.MaxOrDefault(x => x.Score());
+            return this.QualifiersList.MaxOrDefault(x => x.Score());
         }
     }
 }

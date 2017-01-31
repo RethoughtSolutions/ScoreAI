@@ -15,7 +15,7 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 28.12.2016 5:24 PM
+//     Last Edited: 31.01.2017 6:13 AM
 
 namespace ScoreAI.Selector
 {
@@ -33,9 +33,25 @@ namespace ScoreAI.Selector
     public abstract class SelectorBase<T> : ISelector<T>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="SelectorBase{T}"/> class.
+        /// </summary>
+        /// <param name="qualifierList">The qualifier.</param>
+        protected SelectorBase(IList<IQualifier<T>> qualifierList)
+        {
+            this.QualifiersList = qualifierList;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SelectorBase{T}"/> class.
+        /// </summary>
+        protected SelectorBase()
+        {
+        }
+
+        /// <summary>
         ///     Gets or sets the qualifiers.
         /// </summary>
-        public List<IQualifier<T>> Qualifiers { get; set; } = new List<IQualifier<T>>();
+        public IList<IQualifier<T>> QualifiersList { get; set; } = new List<IQualifier<T>>();
 
         /// <summary>
         ///     Adds a qualifier.
@@ -43,14 +59,14 @@ namespace ScoreAI.Selector
         /// <param name="qualifier">The qualifier.</param>
         public void AddQualifier(IQualifier<T> qualifier)
         {
-            this.Qualifiers.Add(qualifier);
+            this.QualifiersList.Add(qualifier);
         }
 
         /// <summary>
         ///     Selects the Qualifier based on its score. Selection depends on the implementation.
         /// </summary>
         /// <returns>
-        ///     The <see cref="QualifierWithScorersBase" />.
+        ///     The <see cref="ISelector{T}" />.
         /// </returns>
         public abstract IQualifier<T> Select();
     }

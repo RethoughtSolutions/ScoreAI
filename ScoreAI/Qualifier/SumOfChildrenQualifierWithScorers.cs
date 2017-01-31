@@ -15,13 +15,15 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 28.12.2016 5:24 PM
+//     Last Edited: 31.01.2017 6:13 AM
 
 namespace ScoreAI.Qualifier
 {
+    using System.Collections.Generic;
     #region Using Directives
 
     using System.Linq;
+    using Scorer;
 
     #endregion
 
@@ -30,6 +32,15 @@ namespace ScoreAI.Qualifier
     /// </summary>
     public class SumOfChildrenQualifierWithScorers<T> : QualifierWithScorersBase<T>
     {
+        public SumOfChildrenQualifierWithScorers(T qualifiedItem, IList<IScorer> scorerList) : base(qualifiedItem, scorerList)
+        {
+        }
+
+        public SumOfChildrenQualifierWithScorers()
+        {
+            
+        }
+
         /// <summary>
         ///     The score.
         /// </summary>
@@ -38,7 +49,7 @@ namespace ScoreAI.Qualifier
         /// </returns>
         public override float Score()
         {
-            return this.Scorers.Sum(x => x.Score());
+            return this.ScorerList.Sum(x => x.Score());
         }
     }
 }

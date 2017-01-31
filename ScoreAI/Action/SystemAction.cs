@@ -15,7 +15,7 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 28.12.2016 5:25 PM
-//     Last Edited: 28.12.2016 5:26 PM
+//     Last Edited: 31.01.2017 6:13 AM
 
 namespace ScoreAI.Action
 {
@@ -26,17 +26,17 @@ namespace ScoreAI.Action
     #endregion
 
     /// <summary>
-    /// The system action. Covers System.Action.
+    ///     The system action. Covers System.Action.
     /// </summary>
     public class SystemAction : IAction
     {
         /// <summary>
-        /// The action
+        ///     The action
         /// </summary>
         private readonly Action action;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SystemAction"/> class.
+        ///     Initializes a new instance of the <see cref="SystemAction" /> class.
         /// </summary>
         /// <param name="action">The action.</param>
         public SystemAction(Action action)
@@ -45,7 +45,7 @@ namespace ScoreAI.Action
         }
 
         /// <summary>
-        /// Executes this instance.
+        ///     Executes this instance.
         /// </summary>
         public void Execute()
         {

@@ -1,4 +1,4 @@
-﻿//     File:  ScoreAI/ScoreAI/AIClient.cs
+﻿//     File:  ScoreAI/ScoreAI/AIActionClient.cs
 //     Copyright (C) 2016 Rethought
 // 
 //     This program is free software: you can redistribute it and/or modify
@@ -15,7 +15,7 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 03.12.2016 9:08 PM
-//     Last Edited: 18.01.2017 12:26 AM
+//     Last Edited: 31.01.2017 6:13 AM
 
 namespace ScoreAI.Client
 {
@@ -33,16 +33,24 @@ namespace ScoreAI.Client
     /// <summary>
     ///     The AI client.
     /// </summary>
-    public abstract class AIActionClient : IAIClient<IAction>
+    public class AiSingleSelectorActionClient : AISingleSelectorClientBase<IAction>
     {
-        public SelectorBase<IAction> RootSelector { get; set; }
+        public AiSingleSelectorActionClient()
+            : base()
+        {
+        }
+
+        public AiSingleSelectorActionClient(ISelector<IAction> selector)
+            : base(selector)
+        {
+        }
 
         /// <summary>
         ///     Ticks this instance.
         /// </summary>
-        public virtual void Tick()
+        public override void Tick()
         {
-            var qualifier = this.RootSelector.Select();
+            var qualifier = this.Selector.Select();
 
             var action = qualifier.QualifiedItem;
 

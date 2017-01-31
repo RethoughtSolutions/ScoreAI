@@ -15,10 +15,19 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //     Created: 20.11.2016 7:30 PM
-//     Last Edited: 29.01.2017 5:42 PM
+//     Last Edited: 31.01.2017 6:13 AM
 
 namespace ScoreAI.Qualifier
 {
+    using System.Collections.Generic;
+    #region Using Directives
+
+    using ScoreAI.Action;
+    using Scorer;
+    using ScoreAI.Selector;
+
+    #endregion
+
     /// <summary>
     ///     The all or nothing qualifier.
     /// </summary>
@@ -36,6 +45,14 @@ namespace ScoreAI.Qualifier
             this.Threshold = threshold;
         }
 
+        protected AllOrNothingQualifierWithScorers()
+        {
+        }
+
+        protected AllOrNothingQualifierWithScorers(T qualifiedItem, float threshold, IList<IScorer> scorerList) : base(qualifiedItem, scorerList)
+        {
+            this.Threshold = threshold;
+        }
 
         /// <summary>
         ///     Gets or sets the threshold.
@@ -52,7 +69,7 @@ namespace ScoreAI.Qualifier
         {
             var sum = 0f;
 
-            foreach (var scorer in this.Scorers)
+            foreach (var scorer in this.ScorerList)
             {
                 var score = scorer.Score();
 
